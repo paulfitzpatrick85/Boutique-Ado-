@@ -40,14 +40,14 @@
     <header class="container-fluid fixed-top"> <!--'fixed-top' sticks to top of page-->
     <div class="row">
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-center text-lg-left"> <!--stack vertically on all but lg and Xlg screens-->
-        <a href="{% 'url_home' %}" class="nav-link main-logo-link">
+        <a href="{% url 'home' %}" class="nav-link main-logo-link">
           <h2 class="logo-font text-black my-0"><strong>Boutique</strong></h2>
         </a>
       </div> 
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">  <!--vertically centered with top and bottom padding on smaller screens-->
 
         <!--FORM IN HEADER-->
-        <form method="GET" action="{% url 'products' %}">  <!-- GET = submit search as url parameters, action empty as url to submit to not exist yet-->
+        <form method="GET" action="">  <!-- GET = submit search as url parameters, action empty as url to submit to not exist yet-->
           <div class="input-group w-100"> <!--100% width-->
               <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site"> <!--q = query = action submitted to url-->
               <div class="input-group-append"> <!--bs class-->
@@ -88,7 +88,7 @@
           <!--shopping bag link-->
           <li class="list-inline-item">
                       <!--if something bag=font is bold and colored-->
-            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
                 <div class="text-center">
                     <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                     <p class="my-0">
