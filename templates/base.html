@@ -36,8 +36,76 @@
     <title>Boutique Ado {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header> <!--'fixed-top' sticks to top of page-->
-    
+    <!--HEADER-->
+    <header class="container-fluid fixed-top"> <!--'fixed-top' sticks to top of page-->
+    <div class="row">
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-center text-lg-left"> <!--stack vertically on all but lg and Xlg screens-->
+        <a href="{% 'url_home' %}" class="nav-link main-logo-link">
+          <h2 class="logo-font text-black my-0"><strong>Boutique</strong></h2>
+        </a>
+      </div> 
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">  <!--vertically centered with top and bottom padding on smaller screens-->
+
+        <!--FORM IN HEADER-->
+        <form method="GET" action="{% url 'products' %}">  <!-- GET = submit search as url parameters, action empty as url to submit to not exist yet-->
+          <div class="input-group w-100"> <!--100% width-->
+              <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site"> <!--q = query = action submitted to url-->
+              <div class="input-group-append"> <!--bs class-->
+                  <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                      <span class="icon">
+                          <i class="fas fa-search"></i>
+                      </span>
+                  </button>
+              </div>
+          </div>
+      </form>
+      </div> 
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">  <!--logo centered by default but left aligned on large screens -->
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0"> <!--inline and unstyled= align list horz without bullets-->
+          <!--dropdown menu-->
+          <li class="list-inline-item dropdown">
+            <!--parent menu-->                                   <!--data-toggle links to bs js to open dropdown-->
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div><i class="fas fa-user fa-lg"></i></div>
+                    <p class="my-0">My Account</p>
+                </div>
+            </a>
+                <!--django template tag for what is displayed in dropdown menu-->
+              <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}        <!--if registered=display 'my profile and 'log out'-->
+                    {% if request.user.is_superuser %}       <!--if logged in and superuser= link to manage store-->
+                        <a href="" class="dropdown-item">Product Management</a>
+                    {% endif %}
+                    <a href="" class="dropdown-item">My Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                {% else %}                            <!--if not registered=display 'Register and 'login'-->
+                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                {% endif %}
+              </div>
+          </li> 
+          <!--shopping bag link-->
+          <li class="list-inline-item">
+                      <!--if something bag=font is bold and colored-->
+            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                <div class="text-center">
+                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                    <p class="my-0">
+                        {% if grand_total %}
+                            ${{ grand_total|floatformat:2 }}   <!--if grand total exist= display within 2 decimals-->
+                        {% else %}
+                            $0.00                             <!--if not exist= display 0-->
+                        {% endif %}
+                    </p>
+                </div>
+            </a>
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </header>
+
     <!--display message sent from django-->
     {% if messages %}
         <div class="message-container"></div>
