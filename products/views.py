@@ -21,8 +21,10 @@ def all_products(request):
                 sortkey = 'lower_name'       # rename to lower_name in the event user sorting by name
                 # annotate allows addition of temporary field on a model
                 products = products.annotate(lower_name=Lower('name'))   # annotate current list of products with a new field
+                
             if sortkey == 'category':
-                sortkey = 'category__name'
+                sortkey = 'category__name'  # effectively changes line 32 to 'products.order_by(sortkey)category__name'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':        # check if direction is descending, if it is reverse order as in next line

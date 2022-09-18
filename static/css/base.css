@@ -70,6 +70,19 @@ body {
 	z-index: -1;  /*make this sit on top of everything else on page*/
 }
 
+a.category-badge > span.badge:hover {
+    background: #212529 !important;  /*matched bs dark class*/
+    color: #fff !important;
+}
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -90,7 +103,7 @@ body {
     }
 
     .header-container {
-        padding-top: 164px;   /*push body down to bottom of the main page header*/
+        padding-top: 164px;
     }
 }
 
