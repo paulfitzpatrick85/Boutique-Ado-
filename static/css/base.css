@@ -74,6 +74,15 @@ a.category-badge > span.badge:hover {
     background: #212529 !important;  /*matched bs dark class*/
     color: #fff !important;
 }
+/*back to top arrow*/
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
