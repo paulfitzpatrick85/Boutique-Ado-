@@ -73,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bag.contexts.bag_contents',      # all access to bag in all templates
             ],
         },
     },
@@ -156,9 +157,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)  # tells django where all
 
 
 MEDIA_URL = '/media/'             
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    #where all uploaded media fileswill go
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    #where all uploaded media files will go
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#calculate delivery costs
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10
+

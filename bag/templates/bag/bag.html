@@ -11,8 +11,9 @@
 
 {% block content %}
     <div class="overlay"></div>      <!--cover background image-->
-    <div class="container mb-2">        <!---->
-        <div class="row">      <!--1st row contains heading-->
+    <div class="container mb-2">       
+        <!--1st row contains heading-->
+        <div class="row">      
             <div class="col">
                 <hr>
                 <h2 class="logo-font mb-4">Shopping Bag</h2>
@@ -20,7 +21,8 @@
             </div>
         </div>
 
-        <div class="row">      <!--2nd row contains table to show bag contents-->
+        <!--2nd row contains table to show bag contents-->
+        <div class="row">      
             <div class="col">
                 {% if bag_items %}             
                     <div class="table-responsive rounded"></div>    <!--only render table if something in shopping bag,'bag_items to be created'-->
