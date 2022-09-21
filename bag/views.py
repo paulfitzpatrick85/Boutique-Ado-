@@ -20,6 +20,6 @@ def add_to_bag(request, item_id):  # id of product being added to bag
         bag[item_id] = quantity       # set key of item id to quantity
 
     request.session['bag'] = bag          # put 'bag' variable into session: overwrite variable in session with updated version
-    print(request.session['bag'])         #just for testing
+   # print(request.session['bag'])         #just for testing that products are adding to, only seen in terminal though
     return redirect(redirect_url)   # redirect user back to redirect url
     
